@@ -17,3 +17,24 @@ Hello, <%= current_user.nickname %>
 <div class="followers">
   Followers: <%= @user_info[:followers] %>
 </div>
+
+<h4>Recent Activity</h4>
+
+<% @user_commits.each do |commit| %>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Repo</th>
+    </tr>
+    <tr>
+      <td><%= "#{commit[:id]}" %></td>
+      <td><%= link_to "#{commit[:repo][:name]}", commit[:repo][:url] %></td>
+    </tr>
+  </table>
+<% end %>
+
+<h4>My Repos</h4>
+
+<% @user_repos.each do |repo| %>
+  <%= repo[:name] %>
+<% end %>
